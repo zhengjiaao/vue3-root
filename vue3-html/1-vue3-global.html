@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>使用全局构建版本</title>
+</head>
+
+<body>
+<!-- 使用了全局构建版本的 Vue，该版本的所有顶层 API 都以属性的形式暴露在了全局的 Vue 对象上。这里有一个使用全局构建版本的例子： -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">{{ message }}</div>
+
+<script>
+    const {createApp, ref} = Vue;
+
+    createApp({
+        setup() {
+            const message = ref("Hello vue!");
+            return {
+                message,
+            };
+        },
+    }).mount("#app");
+</script>
+</body>
+</html>

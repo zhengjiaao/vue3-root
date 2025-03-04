@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Element Plus demo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!-- import vue@3 -->
+    <script src="https://unpkg.com/vue@3"></script>
+<!--    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>-->
+    <!-- import element-plus CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-plus/dist/index.css"
+    />
+    <!-- import element-plus JavaScript -->
+    <script src="https://unpkg.com/element-plus"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <el-button>{{ message }}</el-button>
+
+      <!-- examples1 -->
+      <el-table>
+        <el-table-column></el-table-column>
+        <el-table-column></el-table-column>
+      </el-table>
+
+      <!-- examples2 -->
+      <!--    <el-progress :percentage="50"/>-->
+      <!--    <el-progress :percentage="100" status="success"/>-->
+      <!--    <el-progress :percentage="100" status="warning"/>-->
+      <!--    <el-progress :percentage="50" status="exception"/>-->
+      <el-progress :percentage="100" :format="format" />
+    </div>
+    <script lang="ts" setup>
+      const App = {
+        data() {
+          return {
+            message: "Hello Element Plus",
+            format: (percentage) =>
+              percentage === 100 ? "Full" : `${percentage}%`,
+          };
+        },
+      };
+      const app = Vue.createApp(App);
+      app.use(ElementPlus);
+      app.mount("#app");
+    </script>
+  </body>
+</html>

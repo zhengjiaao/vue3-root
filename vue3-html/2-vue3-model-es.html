@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>使用 ES 模块构建版本</title>
+</head>
+
+<body>
+<!-- 在本文档的其余部分我们使用的主要是 ES 模块语法。现代浏览器大多都已原生支持 ES 模块。因此我们可以像这样通过 CDN 以及原生 ES 模块使用 Vue： -->
+<div id="app">{{ message }}</div>
+
+<script type="module">
+    import {
+        createApp,
+        ref,
+    } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+
+    createApp({
+        setup() {
+            const message = ref("Hello Vue!");
+            return {message};
+        },
+    }).mount("#app");
+</script>
+</body>
+</html>
