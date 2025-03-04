@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <p>data: {{ data }}</p>
     <p>dataBpi: {{ dataBpi }}</p>
 
@@ -50,25 +50,25 @@ export default {
   mounted() {
     //请求json数据
     axios
-      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
-      .then((response) => (this.data = response));
+        .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+        .then((response) => (this.data = response));
 
     //获取data种的其它属性值
     axios
-      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
-      .then((response) => (this.dataBpi = response.data.bpi));
+        .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+        .then((response) => (this.dataBpi = response.data.bpi));
 
     //错误和异常处理
     axios
-      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
-      .then((response) => {
-        this.info = response.data.bpi;
-      })
-      .catch((error) => {
-        console.log(error);
-        this.errored = true;
-      })
-      .finally(() => (this.loading = false));
+        .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+        .then((response) => {
+          this.info = response.data.bpi;
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
   },
 };
 </script>

@@ -1,16 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-<!--
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -19,31 +15,9 @@ import HelloWorld from './components/HelloWorld.vue'
   </header>
 
   <RouterView />
--->
-
-  <div class="app-container">
-    <div class="router-view-container">
-      <RouterView />
-    </div>
-  </div>
-
 </template>
 
-
 <style scoped>
-.app-container {
-  height: 100vh; /* 使容器占满整个视口高度 */
-}
-
-.router-view-container {
-  display: flex; /*使其内容居中*/
-  justify-content: center; /*使其内容居中*/
-  align-items: center; /*使其内容居中*/
-  height: 100%; /* 使容器占满父容器高度 */
-}
-</style>
-
-<!--<style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -62,7 +36,7 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(&#45;&#45;color-text);
+  color: var(--color-text);
 }
 
 nav a.router-link-exact-active:hover {
@@ -72,7 +46,7 @@ nav a.router-link-exact-active:hover {
 nav a {
   display: inline-block;
   padding: 0 1rem;
-  border-left: 1px solid var(&#45;&#45;color-border);
+  border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {
@@ -83,7 +57,7 @@ nav a:first-of-type {
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(&#45;&#45;section-gap) / 2);
+    padding-right: calc(var(--section-gap) / 2);
   }
 
   .logo {
@@ -105,4 +79,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>-->
+</style>

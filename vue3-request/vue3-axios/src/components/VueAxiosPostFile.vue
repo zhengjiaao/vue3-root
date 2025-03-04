@@ -1,18 +1,18 @@
 <template>
-  <div class="hello" id="app">
+  <div class="content-container">
     <h1>{{ msg }}</h1>
 
     <h3>post请求-上传单文件</h3>
     <form @submit.prevent="upload1" method="post" enctype="multipart/form-data">
-      <input type="file" name="myfile1" v-on:change="onChange1($event)" />
+      <input type="file" name="myfile1" v-on:change="onChange1($event)"/>
       <button type="submit">上传单文件-1</button>
     </form>
     <p>{{ data1 }}</p>
 
     <h3>post请求-上传单文件-重命名</h3>
     <form @submit.prevent="upload2" method="post" enctype="multipart/form-data">
-      <input type="file" name="myfile2" v-on:change="onChange2($event)" />
-      <input v-model="newFileName" placeholder="newFileName" />
+      <input type="file" name="myfile2" v-on:change="onChange2($event)"/>
+      <input v-model="newFileName" placeholder="newFileName"/>
       <button type="submit">上传单文件-2</button>
     </form>
     <p>{{ data2 }}</p>
@@ -21,10 +21,10 @@
     <form @submit.prevent="upload3" method="post" enctype="multipart/form-data">
       <!--可选多文件 multiple="multiple" -->
       <input
-        type="file"
-        name="myfile3"
-        multiple="multiple"
-        v-on:change="onChange3($event)"
+          type="file"
+          name="myfile3"
+          multiple="multiple"
+          v-on:change="onChange3($event)"
       />
       <button type="submit">上传多文件-3</button>
     </form>
@@ -40,12 +40,9 @@ export default {
   name: "VueResourcePostFile",
   data() {
     return {
-      url1:
-        "http://localhost:8080/springboot-test-remoteservice/rest/v1/post/upload/v1",
-      url2:
-        "http://localhost:8080/springboot-test-remoteservice/rest/v1/post/upload/v2",
-      url3:
-        "http://localhost:8080/springboot-test-remoteservice/rest/v1/post/upload/v3",
+      url1: "http://localhost:19000/post/upload/v1",
+      url2: "http://localhost:19000/post/upload/v3",
+      url3: "http://localhost:19000/post/upload/v2",
       myfile1: {},
       myfile2: {},
       newFileName: "",
@@ -96,14 +93,14 @@ export default {
         console.log("服务器请求出错了");
       };
       axios
-        .post(
-          this.url1,
-          formData,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
-        )
-        .then(successCallback, errorCallback);
+          .post(
+              this.url1,
+              formData,
+              {
+                headers: {"Content-Type": "multipart/form-data"},
+              }
+          )
+          .then(successCallback, errorCallback);
     },
 
     //上传单文件请求-2
@@ -112,7 +109,7 @@ export default {
       //表单数据
       var formData = new FormData();
       formData.append("file", this.myfile2);
-      formData.append("fileName", this.newFileName);
+      formData.append("filename", this.newFileName);
       var successCallback = (response) => {
         console.log("服务器请求成功了");
         let data = response.data;
@@ -124,10 +121,10 @@ export default {
       };
       //请求
       axios
-        .post(this.url2, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        })
-        .then(successCallback, errorCallback);
+          .post(this.url2, formData, {
+            headers: {"Content-Type": "multipart/form-data"},
+          })
+          .then(successCallback, errorCallback);
     },
 
     //上传多文件请求-3
@@ -144,11 +141,11 @@ export default {
       var errorCallback = (response) => {
         console.log("服务器请求出错了");
       };
-     axios
-        .post(this.url3, this.fileFormData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        })
-        .then(successCallback, errorCallback);
+      axios
+          .post(this.url3, this.fileFormData, {
+            headers: {"Content-Type": "multipart/form-data"},
+          })
+          .then(successCallback, errorCallback);
     },
   },
 };

@@ -1,16 +1,16 @@
 <template>
-  <div class="hello" id="app">
+  <div class="content-container">
     <h1>{{ msg }}</h1>
 
     <h3>post请求-无参</h3>
-    <input v-model="url1" placeholder="url" />
+    <input v-model="url1" placeholder="url"/>
     <button type="button" @click="getAjax1()">点击尝试</button>
     <h5>data: {{ addData1 }}</h5>
 
     <h3>post请求-有参-单个参数</h3>
-    <input v-model="url2" placeholder="url" />
-    <input v-model="myage" placeholder="age" />
-    <input v-model="myname" placeholder="name" />
+    <input v-model="url2" placeholder="url"/>
+    <input v-model="myid" placeholder="id"/>
+    <input v-model="name" placeholder="name"/>
     <button type="button" @click="getAjax2()">点击尝试</button>
     <h3>data: {{ addData2 }}</h3>
   </div>
@@ -24,12 +24,10 @@ export default {
   name: "VueResourcePost",
   data() {
     return {
-      url1:
-        "http://localhost:8080/springboot-test-remoteservice/rest/v1/post/userdto2",
-      url2:
-        "http://localhost:8080/springboot-test-remoteservice/rest/v1/post/userdto4",
-      myage: "21",
-      myname: "李四",
+      url1: "http://localhost:19000/post",
+      url2: "http://localhost:19000/post/object/v2",
+      myid: "21",
+      name: "李四",
       addData1: {},
       addData2: {},
       msg: "演示POST请求",
@@ -66,15 +64,15 @@ export default {
         console.log("服务器请求出错了");
       };
       axios
-        .post(
-          this.url2,
-          //axios post默认会json序列化参数
-            {
-              name : this.myname,
-              age : this.myage
-            }
-        )
-        .then(successCallback, errorCallback);
+          .post(
+              this.url2,
+              //axios post默认会json序列化参数
+              {
+                name: this.name,
+                id: this.myid
+              }
+          )
+          .then(successCallback, errorCallback);
     },
   },
 };

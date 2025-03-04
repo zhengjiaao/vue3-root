@@ -1,16 +1,16 @@
 <template>
-  <div class="hello" id="app">
+  <div class="content-container">
     <h1>{{ msg }}</h1>
 
     <h3>put请求-无参</h3>
-    <input v-model="url1" placeholder="url" />
+    <input v-model="url1" placeholder="url"/>
     <button type="button" @click="getAjax1()">点击尝试</button>
     <h5>data: {{ addData1 }}</h5>
 
     <h3>put请求-有参-单个参数</h3>
-    <input v-model="url2" placeholder="url" />
-    <input v-model="myage" placeholder="age" />
-    <input v-model="myname" placeholder="name" />
+    <input v-model="url2" placeholder="url"/>
+    <input v-model="myage" placeholder="age"/>
+    <input v-model="myname" placeholder="name"/>
     <button type="button" @click="getAjax2()">点击尝试</button>
     <h3>data: {{ addData2 }}</h3>
   </div>
@@ -24,10 +24,8 @@ export default {
   name: "VueResourcePut",
   data() {
     return {
-      url1:
-        "http://localhost:8080/springboot-test-remoteservice/rest/v1/put/v1",
-      url2:
-        "http://localhost:8080/springboot-test-remoteservice/rest/v1/put/userdto",
+      url1: "http://localhost:19000/put",
+      url2: "http://localhost:19000/put/object/v2",
       myage: "21",
       myname: "李四",
       addData1: {},
@@ -66,14 +64,14 @@ export default {
         console.log("服务器请求出错了");
       };
       axios
-        .put(
-          this.url2,
-          {
-            name : this.myname,
-            age : this.myage,
-          }
-        )
-        .then(successCallback, errorCallback);
+          .put(
+              this.url2,
+              {
+                name: this.myname,
+                age: this.myage,
+              }
+          )
+          .then(successCallback, errorCallback);
     },
   },
 };
