@@ -1,4 +1,4 @@
-# vue3-root
+# vue3-project
 
 - [vue3-英文-官网](https://vuejs.org/)
 - [vue3-中文-快速开始](https://cn.vuejs.org/guide/quick-start.html)
