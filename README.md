@@ -8,7 +8,7 @@
 
 ## 目录结构
 
-- [Vue3项目结构介绍.md](Vue3项目结构介绍.md)
+- [Vue3项目结构介绍.md](docs/Vue3项目结构介绍.md)
 
 ## 基础环境
 
@@ -100,7 +100,7 @@ pnpm create vue@latest
 yarn create vue@latest
 ```
 
-![project.png](./project.png)
+![project.png](docs/project.png)
 
 #### 步骤3：运行项目
 
@@ -195,7 +195,7 @@ CDN，例如 [jsdelivr](https://www.jsdelivr.com/package/npm/vue) 或 [cdnjs](ht
 npm create vue@latest
 ```
 
-![project.png](./project.png)
+![project.png](docs/project.png)
 
 如果不确定是否要开启某个功能，你可以直接按下回车键选择 `No`。在项目被创建后，通过以下步骤安装依赖。
 
