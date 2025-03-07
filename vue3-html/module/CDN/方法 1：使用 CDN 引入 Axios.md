@@ -1,0 +1,1 @@
+直接在 HTML 文件中通过 <script> 标签引入 Axios，而不是在 api.js 中使用 import。
