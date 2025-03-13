@@ -48,6 +48,16 @@ const router = createRouter({
             component: () => import('../views/echarts/ScatterView.vue'),
         },
         {
+            path: '/radar',
+            name: 'radar',
+            component: () => import('../views/echarts/RadarView.vue'),
+        },
+        {
+            path: '/sankey',
+            name: 'sankey',
+            component: () => import('../views/echarts/SankeyView.vue'),
+        },
+        {
             path: '/map',
             name: 'map',
             component: () => import('../views/echarts/map/MapView.vue'),

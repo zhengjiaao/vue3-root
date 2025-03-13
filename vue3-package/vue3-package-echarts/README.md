@@ -40,6 +40,9 @@ npm run build
 # 安装 echarts
 npm install echarts --save
 
+# 安装 echarts 类型定义
+npm install --save @types/echarts
+
 # 安装 echarts-gl 三维可视化(3D、地球等)
 npm install echarts-gl --save
 npm install @types/geojson --save
