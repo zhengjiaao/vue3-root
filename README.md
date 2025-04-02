@@ -227,7 +227,10 @@ npm run build
 
 ```shell
 # 安装组件
-npm install vue-router@4
+npm install vue-router
+# 安装组件(指定版本)
+npm install vue-router@4.0.0
+npm install vue-router@4.0.0-beta.4
 
 # 卸载组件
 npm uninstall vue-router
