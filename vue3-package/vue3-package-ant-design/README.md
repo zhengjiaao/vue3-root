@@ -46,6 +46,7 @@ npm install ant-design-vue --save
 # 其他组件(测试所需)
 npm install vue-request --save
 npm install axios --save
+npm install -D less
 ```
 
 ## 组件应用

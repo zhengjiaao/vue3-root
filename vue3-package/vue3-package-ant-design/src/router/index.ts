@@ -18,6 +18,11 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },*/
     {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('../views/ant/AdminView.vue'),
+    },
+    {
       path: '/form',
       name: 'form',
       component: () => import('../views/ant/FormView.vue'),
