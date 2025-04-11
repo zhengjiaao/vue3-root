@@ -1,0 +1,21 @@
+// config.hjson
+{
+  # 应用配置
+  app: {
+    name: "My App"
+    port: 3000
+    features: [
+      auth
+      dashboard
+      /* 即将启用的功能 */
+      // notifications
+    ]
+  }
+  // 扩展：环境区分
+  development: {
+      api: "http://localhost:3000"
+    },
+    production: {
+      api: "https://api.example.com"
+    }
+}

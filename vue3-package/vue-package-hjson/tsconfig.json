@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  // TypeScript 类型支持（tsconfig.json） HJson
+  "compilerOptions": {
+    "resolveJsonModule": true, // 允许导入 JSON 文件
+    "esModuleInterop": true, // 允许导入 CommonJS 模块
+    "types": ["node"] // 添加 "node" 类型支持
+  }
+}

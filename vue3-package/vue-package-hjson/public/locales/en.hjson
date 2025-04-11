@@ -1,0 +1,8 @@
+// locales/en.hjson
+{
+  greeting: Welcome to {appName}!
+  buttons: {
+    confirm: OK
+    cancel: Cancel
+  }
+}
