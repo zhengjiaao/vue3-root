@@ -1,154 +1,132 @@
-## 搭建项目
+# vue3-package-element
 
-### 初始化项目结构
+This template should help get you started developing with Vue 3 in Vite.
 
-```text
-element-demo/
-├── src/
-│   ├── App.vue
-│   └── main.ts
-├── index.html
-├── package.json
-└── vite.config.js
-```
+## Recommended IDE Setup
 
-index.html
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and
+disable Vetur).
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Element Plus Modular Demo</title>
-</head>
-<body>
-<div id="app"></div>
-<script type="module" src="/src/main.ts"></script>
-</body>
-</html>
-```
+## Type Support for `.vue` Imports in TS
 
-src/App.vue
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for
+type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the
+TypeScript language service aware of `.vue` types.
 
-```vue
+## Customize configuration
 
-<template>
-  <div>
-    <el-button>{{ message }}</el-button>
+See [Vite Configuration Reference](https://vite.dev/config/).
 
-    <!-- Table Example -->
-    <el-table :data="[]">
-      <el-table-column prop="name" label="Name"></el-table-column>
-      <el-table-column prop="age" label="Age"></el-table-column>
-    </el-table>
+## Project Setup
 
-    <!-- Progress Example -->
-    <el-progress :percentage="100" :format="format"/>
-  </div>
-</template>
-
-<script setup lang="ts">
-  import {ref} from 'vue'
-
-  const message = ref('Hello Element Plus')
-
-  const format = (percentage: number) =>
-      percentage === 100 ? 'Full' : `${percentage}%`
-</script>
-```
-
-src/main.ts
-
-```typescript
-import {createApp} from 'vue'
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-import App from './App.vue'
-
-const app = createApp(App)
-app.use(ElementPlus)
-app.mount('#app')
-```
-
-vite.config.js
-
-```javascript
-import {defineConfig} from 'vite'
-import vue from '@vitejs/plugin-vue'
-
-export default defineConfig({
-    plugins: [vue()]
-})
-```
-
-### 创建package.json文件
-
-```shell
-npm init -y
-```
-
-手动修改package.json为以下内容：
-
-```json
-{
-  "name": "element-plus-demo",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "vue": "^3.4.0",
-    "element-plus": "^2.6.3"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.2.0"
-  }
-}
-```
-
-### 安装项目依赖
-
-```shell
+```sh
 npm install
 ```
 
-### 运行项目
+### Compile and Hot-Reload for Development
 
-```shell
+```sh
 npm run dev
 ```
 
-## 按需导入优化
+### Type-Check, Compile and Minify for Production
 
-1.安装unplugin-vue-components：
-
-```shell
-npm install unplugin-vue-components -D
+```sh
+npm run build
 ```
 
-2.修改vite.config.js：
+## 安装组件
 
-```typescript
-import {defineConfig} from 'vite'
-import vue from '@vitejs/plugin-vue'
-import Components from 'unplugin-vue-components/vite'
-import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
+```sh
+# 安装 Element Plus 和它的图标库（可选）
+npm install element-plus @element-plus/icons-vue
 
-export default defineConfig({
-    plugins: [
-        vue(),
-        Components({
-            resolvers: [ElementPlusResolver()],
-        }),
-    ]
-})
+# 安装 axios
+npm install axios --save
 ```
 
-这样可以实现自动按需导入Element Plus组件并减小打包体积。
+## 组件应用
 
-按需导入优化是Element Plus的一个重要特性，它允许开发者在运行时动态导入组件，从而减少打包后的文件体积。
+### 引入 Element Plus 并注册组件
 
+#### 全局引用
+
+可以在项目的入口文件（如 main.ts 或 main.js）中全局引入 Element Plus：
+
+```ts
+// main.ts
+import {createApp} from 'vue'
+import App from './App.vue'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
+const app = createApp(App)
+
+app.use(ElementPlus)
+
+app.mount('#app')
+```
+
+在其他组件中使用：
+UserComponent.vue
+
+```js
+import {ElMessage, ElMessageBox} from 'element-plus'
+
+// 原有代码...
+```
+
+#### 在 setup() 中按需引入
+
+或者在当前文件中按需引入所需组件：
+
+```js
+import {ElMessage, ElMessageBox} from 'element-plus'
+import 'element-plus/dist/index.css'
+import {ElForm, ElFormItem, ElInput, ElButton, ElTable, ElTableColumn} from 'element-plus'
+
+// 原有代码...
+```
+
+#### 模板中使用
+
+确保模板中的组件标签与引入的组件一致：
+
+```html
+
+<template>
+    <div class="user-manager">
+        <!-- 用户表单 -->
+        <el-form :model="formState" label-width="80px" @submit.prevent="createUser">
+            <el-form-item label="姓名" prop="name" required>
+                <el-input v-model="formState.name" placeholder="请输入姓名" minlength="3"/>
+            </el-form-item>
+            <el-form-item label="邮箱" prop="email" required>
+                <el-input v-model="formState.email" type="email" placeholder="请输入邮箱"/>
+            </el-form-item>
+            <el-form-item label="年龄" prop="age">
+                <el-input v-model.number="formState.age" type="number" min="0" placeholder="请输入年龄"/>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" native-type="submit">添加用户</el-button>
+                <el-button @click="resetForm">重置</el-button>
+            </el-form-item>
+        </el-form>
+
+        <!-- 用户列表 -->
+        <el-table :data="users" v-if="users.length" style="width: 100%">
+            <el-table-column prop="name" label="姓名"/>
+            <el-table-column prop="email" label="邮箱"/>
+            <el-table-column prop="age" label="年龄"/>
+            <el-table-column prop="createTime" label="注册时间" :formatter="(row) => formatDate(row.createTime)"/>
+            <el-table-column label="操作">
+                <template #default="scope">
+                    <el-button type="danger" @click="deleteUser(scope.row.id)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+        <p v-else>暂无用户数据</p>
+    </div>
+</template>
+
+```
