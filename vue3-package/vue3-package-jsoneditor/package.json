@@ -1,5 +1,5 @@
 {
-  "name": "vue-package-uuid",
+  "name": "vue3-package-jsoneditor",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,7 +12,8 @@
     "clean": "powershell -ExecutionPolicy Bypass -File .\\clean.ps1"
   },
   "dependencies": {
-    "uuid": "^11.1.0",
+    "@types/jsoneditor": "^9.9.5",
+    "jsoneditor": "^10.2.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },

@@ -1,5 +1,5 @@
 {
-  "name": "vue-package-office",
+  "name": "vue3-package-vuedraggable",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,22 +12,18 @@
     "clean": "powershell -ExecutionPolicy Bypass -File .\\clean.ps1"
   },
   "dependencies": {
-    "@vue-office/docx": "^1.6.3",
-    "@vue-office/excel": "^1.7.14",
-    "@vue-office/pdf": "^2.0.10",
-    "@vue-office/pptx": "^1.0.1",
     "vue": "^3.5.13",
-    "vue-demi": "^0.14.10",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
-    "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.13.9",
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@tsconfig/node22": "^22.0.1",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.7.0",
     "npm-run-all2": "^7.0.2",
     "typescript": "~5.8.0",
-    "vite": "^6.2.1",
+    "vite": "^6.2.4",
     "vite-plugin-vue-devtools": "^7.7.2",
     "vue-tsc": "^2.2.8"
   }

@@ -1,5 +1,5 @@
 {
-  "name": "vue-package-gsap",
+  "name": "vue3-package-hjson",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,7 +12,8 @@
     "clean": "powershell -ExecutionPolicy Bypass -File .\\clean.ps1"
   },
   "dependencies": {
-    "gsap": "^3.12.7",
+    "@types/hjson": "^2.4.6",
+    "hjson": "^3.2.2",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
