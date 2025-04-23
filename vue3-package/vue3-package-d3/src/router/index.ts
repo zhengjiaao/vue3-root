@@ -18,6 +18,11 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },*/
     {
+      path: '/base/area',
+      name: 'baseArea',
+      component: () => import('../views/d3/base/AreaChartView.vue'),
+    },
+    {
       path: '/base/bar',
       name: 'baseBar',
       component: () => import('../views/d3/base/BarChartView.vue'),
