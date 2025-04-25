@@ -6,6 +6,13 @@ This template should help get you started developing with Vue 3 in Vite.
 
 采用了纯前端的开发 + Mock 数据，没有后端服务。
 
+共用 3 角色：
+
+* 管理员：admin/pass123   角色：admin 支持所有页面访问
+* 审计用户: auditor/pass123   角色：auditor 支持监控面板、日志管理
+* 普通用户: user/pass123   角色：user 不支持访问OMS管理系统平台
+
+
 ## 功能介绍
 
 - 登录页面
