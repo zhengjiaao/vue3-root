@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {ref, computed, watchEffect} from 'vue'
-import {h} from 'vue';
-import {useRouter, useRoute} from 'vue-router'
-import {useUserStore} from '@/stores/user.ts'
-import {ElScrollbar} from 'element-plus'
+import { ref, computed, watchEffect } from 'vue'
+import { h } from 'vue';
+import { useRouter, useRoute } from 'vue-router'
+import { useUserStore } from '@/stores/user.ts'
+import { ElScrollbar } from 'element-plus'
 // 定义路由类型
-import type {RouteRecordRaw} from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 import { logout } from '@/api/auth'
 
 import {
@@ -21,14 +21,15 @@ import {
   ArrowDown
 } from '@element-plus/icons-vue'
 
+// 初始化路由和用户信息
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
 
 // 状态管理
-const isCollapse = ref(false)
-const activeMenu = ref('')
-const breadcrumbList = ref<Array<{ title: string; path?: string }>>([])
+const isCollapse = ref(false) // 控制侧边栏是否折叠
+const activeMenu = ref('') // 当前激活的菜单项
+const breadcrumbList = ref<Array<{ title: string; path?: string }>>([]) // 面包屑导航列表
 
 // 动态图标映射
 const iconMap: Record<string, any> = {
@@ -41,15 +42,6 @@ const iconMap: Record<string, any> = {
 }
 
 // 获取权限路由
-// const permissionRoutes = computed(() => {
-//   return router.getRoutes()
-//     .filter(route =>
-//       route.meta?.title &&
-//       !route.meta.hidden &&
-//       (!route.meta.roles || route.meta.roles.includes(userStore.role || ''))
-//         .sort((a, b) => (a.meta.order || 0) - (b.meta.order || 0))
-// })
-
 const permissionRoutes = computed(() => {
   return router.getRoutes()
     .filter((route: RouteRecordRaw) =>
@@ -70,36 +62,9 @@ const generateBreadcrumb = () => {
 }
 
 // 生成菜单项
-// const renderMenuItem = (route: any) => {
-//   if (!route.children || route.children.length === 0) {
-//     return (
-//       <el-menu-item
-//     index={route.path}
-//     onClick={() => router.push(route.path)}
-//   >
-//     <el-icon>{route.meta.icon ? h(iconMap[route.meta.icon]) : h(IconMenu)}</el-icon>
-//     <span>{route.meta.title}</span>
-//     </el-menu-item>
-//   )
-//   }
-//
-//   return (
-//     <el-sub-menu index={route.path}>
-//     {{
-//     title: () => (
-//       <>
-//         <el-icon>{route.meta.icon ? h(iconMap[route.meta.icon]) : h(IconMenu)}</el-icon>
-//       <span>{route.meta.title}</span>
-//       </>
-//     ),
-//   default: () => route.children.map((child: any) => renderMenuItem(child))
-//   }}
-//   </el-sub-menu>
-// )
-// }
-
 const renderMenuItem = (route: any) => {
   if (!route.children || route.children.length === 0) {
+    // 渲染单个菜单项
     return h(
       'el-menu-item',
       {
@@ -107,15 +72,16 @@ const renderMenuItem = (route: any) => {
         onClick: () => router.push(route.path),
       },
       [
-        h('el-icon', {}, route.meta.icon ? h(iconMap[route.meta.icon]) : h(IconMenu)),
+        h('el-icon',{},route.meta.icon ? h(iconMap[route.meta.icon]) : h(IconMenu)),
         h('span', {}, route.meta.title),
       ]
     );
   }
 
+  // 渲染带有子菜单的菜单项
   return h(
     'el-sub-menu',
-    {index: route.path},
+    { index: route.path },
     {
       default: () =>
         route.children.map((child: any) => renderMenuItem(child)),
@@ -129,9 +95,6 @@ const renderMenuItem = (route: any) => {
 
 // 退出登录
 const handleLogout = async () => {
-  // userStore.logout()
-  // router.push('/login')
-
   try {
     const isLogout = await logout();
     if (isLogout) {
@@ -167,9 +130,8 @@ watchEffect(() => {
     <!-- 侧边栏 -->
     <div class="sidebar-container" :class="{ 'is-collapse': isCollapse }">
       <div class="logo-container">
-        <!--<img src="@/assets/logo.png" class="logo" />-->
         <img src="../../assets/logo.svg" class="logo"/>
-        <span v-show="!isCollapse" class="title">OMS Pro</span>
+        <span v-show="!isCollapse" class="title">OMS</span>
       </div>
 
       <el-scrollbar class="menu-scrollbar">
@@ -211,8 +173,6 @@ watchEffect(() => {
         <div class="right-menu">
           <el-dropdown trigger="click">
             <div class="avatar-wrapper">
-              <!--<el-avatar size="small" :icon="User"/>-->
-              <!-- 根据 avatarUrl 显示头像或默认图标 -->
               <el-avatar size="small" :src="userStore.avatar" :icon="userStore.avatar ? undefined : User"/>
               <span class="username">{{ userStore.username }}</span>
               <el-icon class="el-icon--right">
@@ -252,7 +212,7 @@ watchEffect(() => {
   overflow: hidden;
 
   .sidebar-container {
-    width: 210px;
+    width: 100px;
     height: 100%;
     background-color: #001529;
     transition: width 0.3s;
