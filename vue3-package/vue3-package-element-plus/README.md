@@ -2,6 +2,13 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## 快速开始
+
+- [官网 | element-plus](https://cn.element-plus.org/zh-CN/)
+- [官网 | element-plus | 指南](https://cn.element-plus.org/zh-CN/guide/design.html)
+- [官网 | element-plus | 组件](https://cn.element-plus.org/zh-CN/component/overview.html)
+- [github | element-plus](https://github.com/element-plus/element-plus)
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and
@@ -38,7 +45,7 @@ npm run build
 ## 安装组件
 
 ```sh
-# 安装 Element Plus 和它的图标库（可选）
+# 安装 Element Plus 和它的图标库（可选，推荐在组件中使用）
 npm install element-plus @element-plus/icons-vue
 
 # 安装 axios
